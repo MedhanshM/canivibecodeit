@@ -62,8 +62,8 @@
       toastTimer = setTimeout(() => el.classList.remove('show'), 2400);
     };
 
-    /* ---------- theme toggle ---------- */
-    $('[data-toggle-theme]')?.addEventListener('click', () => {
+    /* ---------- theme toggle (header button + the phone menu's switch) ---------- */
+    $$('[data-toggle-theme]').forEach((btn) => btn.addEventListener('click', () => {
       const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
       document.documentElement.dataset.theme = next;
       localStorage.setItem('theme', next);
@@ -71,7 +71,26 @@
       const meta = document.querySelector('meta[name="theme-color"]');
       if (meta) meta.content = next === 'light' ? '#f7f8f9' : '#0b0d0b';
       track('theme_toggle', { theme: next });
-    });
+    }));
+
+    /* ---------- phone menu ---------- */
+    // A native <details>, so Enter/Space and the open state come free; this adds
+    // Escape (focus back on the trigger) and closing on a tap outside or on one
+    // of its links (same-page links like /#death-list swap nothing, so the
+    // menu would stay open). Other navigations render a fresh, closed header.
+    const menu = $('[data-site-menu]');
+    if (menu) {
+      const close = () => { menu.open = false; };
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape' || !menu.open) return;
+        close();
+        $('summary', menu).focus();
+      }, { signal: page.signal });
+      document.addEventListener('click', (e) => {
+        if (menu.open && !menu.contains(e.target)) close();
+      }, { signal: page.signal });
+      $$('a', menu).forEach((a) => a.addEventListener('click', close));
+    }
 
     /* ---------- search filter + category dropdown ---------- */
     const search = $('#search');

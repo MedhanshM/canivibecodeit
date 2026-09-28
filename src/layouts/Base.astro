@@ -69,9 +69,9 @@ const blocks = [orgLd, ...jsonld];
 
 /* One list, two renderings — the header shows only `top` items (the pages
    that make money or grow the directory, per the operator's nav thinning),
-   the footer shows every section so nothing is stranded when the header
-   hides its links on narrow viewports. Edit THIS list, never the markup:
-   the two navs must not drift apart again. */
+   the footer and the phone menu show every section so nothing is stranded
+   when the header hides its links on narrow viewports. Edit THIS list,
+   never the markup: the navs must not drift apart again. */
 // The builder-game route (/challenge) is deliberately UNLINKED — it stays dark
 // until Sept 1 and is never in the nav (ruling G1). /thebuildgames joined the
 // nav for the games launch (operator brief, Aug 31) — accent-highlighted.
@@ -164,6 +164,21 @@ const headerLinks = navSections.filter((s) => s.top);
             <svg class="sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"></path></svg>
           </button>
           <Radio />
+          {/* Below 980px the header hides most links: this menu carries all of
+              them, and below 760px the theme switch too (it takes the header
+              toggle's slot). Escape and outside taps close it: app.js. */}
+          <details class="site-menu" data-site-menu>
+            <summary class="site-menu-btn" aria-label="menu">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+            </summary>
+            <div class="site-menu-panel">
+              {navSections.map((s) => <a class={s.cls} href={s.href}>{s.label}</a>)}
+              <button type="button" class="site-menu-theme" data-toggle-theme>
+                <span class="to-light">switch to light mode</span>
+                <span class="to-dark">switch to dark mode</span>
+              </button>
+            </div>
+          </details>
         </nav>
       </div>
     </header>
