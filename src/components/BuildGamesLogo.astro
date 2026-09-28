@@ -4,10 +4,12 @@
 // Mark is SVG (crisp at any size, theme-independent gradient); wordmark is
 // web-font text in currentColor, so it's white on dark / near-black on light
 // automatically. Reusable for the hero, and later the favicon/social mark.
-const { class: cls } = Astro.props;
+// `as` sets the wrapper element: the hero passes "h1" so the lockup is the
+// page heading. The wordmark text is the accessible name; the mark is decor.
+const { class: cls, as: Tag = 'div' } = Astro.props;
 ---
-<div class:list={['bgl', cls]}>
-  <svg class="bgl-mark" viewBox="0 0 232 72" role="img" aria-label="The Build Games">
+<Tag class:list={['bgl', cls]}>
+  <svg class="bgl-mark" viewBox="0 0 232 72" aria-hidden="true">
     <defs>
       <linearGradient id="bgl-ct" gradientUnits="userSpaceOnUse" x1="0" y1="8" x2="232" y2="64">
         <stop offset="0" stop-color="#ff7a5c" />
@@ -20,7 +22,7 @@ const { class: cls } = Astro.props;
     <rect x="168" y="6" width="60" height="60" fill="url(#bgl-ct)" />
   </svg>
   <span class="bgl-word">THE BUILD GAMES</span>
-</div>
+</Tag>
 
 <style>
   /* Compact lockup (Rob's round-2 compression): the mark and wordmark keep

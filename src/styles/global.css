@@ -1176,6 +1176,9 @@ h3 {
   padding-top: 56px;
 }
 
+/* h1 when the list is the page itself (/categories, /stats...), h2 on the
+   home page where it sits under the hero's h1: same look either way. */
+.list-head h1,
 .list-head h2 {
   font-size: 32px;
 }
