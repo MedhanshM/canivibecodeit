@@ -20,7 +20,7 @@ const description = `Every category on the death list: ${total} subscription app
       <span class="note">{total} apps · {cats.length} categories</span>
     </div>
 
-    <div class="related-grid" style="padding-top: 24px; grid-template-columns: repeat(3, 1fr);">
+    <div class="related-grid" style="padding-top: 24px;">
       {
         cats.map((c) => (
           <a class="mini-card" href={`/category/${c.slug}`}>
