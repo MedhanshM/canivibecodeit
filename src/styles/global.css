@@ -13,8 +13,14 @@
   --primary-dim: #1d5c33;
   --kinda-bg: #ffb000;
   --kinda-fg: #1a1200;
-  --no-bg: #ff4444;
+  /* #ff4444 with only its OKLCH lightness lowered: white NOT REALLY text on
+     it was 3.4:1, now 4.6:1. */
+  --no-bg: #e4232d;
   --no-fg: #ffffff;
+  /* Verdict red/amber as TEXT on the page ground. The -bg values are fills
+     and drop under 4.5:1 as type, so text uses these. */
+  --no-text: #ff4444;
+  --kinda-text: #ffb000;
   /* Amber as TEXT (fact-ledger "the catch" labels) — --kinda-bg is a chip
      background and washes out as type on the light paper ground. */
   --catch: #ffb000;
@@ -61,6 +67,8 @@
   --kinda-fg: #241800;
   --no-bg: #e03131;
   --no-fg: #ffffff;
+  --no-text: #ce1720;
+  --kinda-text: #8a6200;
   --catch: #8a6200;
   --ticker: #0e9c47;
   --ticker-dim: #64827a;
@@ -1574,7 +1582,7 @@ a.row:hover .badge {
   font-style: normal;
   font-size: 11px;
   font-weight: 700;
-  color: var(--no-bg);
+  color: var(--no-text);
 }
 
 .prior-card {
@@ -4191,7 +4199,7 @@ button.sp-banner {
 }
 
 .sp-form-msg.bad {
-  color: var(--no-bg);
+  color: var(--no-text);
 }
 
 .sp-form .btn {
@@ -4285,7 +4293,7 @@ button.sp-banner {
 }
 
 .icon-up-msg.bad {
-  color: var(--no-bg);
+  color: var(--no-text);
 }
 
 .icon-up.busy {
@@ -4889,7 +4897,7 @@ a.bd-row:hover {
 }
 
 .bd-fact .v.bad {
-  color: var(--no-bg);
+  color: var(--no-text);
 }
 
 .bd-fine {
@@ -5194,7 +5202,7 @@ a.bd-row:hover {
 .stack-btn.in-stack.armed {
   border-color: color-mix(in srgb, #ff4444 45%, transparent);
   background: color-mix(in srgb, #ff4444 10%, transparent);
-  color: #ff4444;
+  color: var(--no-text);
 }
 
 /* Death-list quick-save lane: fixed 48px slot after the votes column, icon
@@ -6215,7 +6223,7 @@ dialog.study-lightbox .lb-close:hover {
 .abc-row-state {
   font-size: 11px;
   line-height: 14px;
-  color: var(--kinda-bg);
+  color: var(--kinda-text);
   white-space: nowrap;
 }
 
@@ -6359,7 +6367,7 @@ dialog.study-lightbox .lb-close:hover {
 }
 
 .abc-err {
-  color: var(--no-bg);
+  color: var(--no-text);
 }
 
 .abc-foot {

@@ -329,12 +329,12 @@ const totalApps = allApps().length;
     cursor: pointer;
   }
   .stack-remove:hover {
-    color: var(--no, #ff4444);
+    color: var(--no-text);
   }
   /* Armed state for the two-step confirm: the label already changed, so this
      just has to make it read as the dangerous click it now is. */
   .stack-remove.armed {
-    color: #ff4444;
+    color: var(--no-text);
     font-weight: 500;
   }
 
@@ -523,7 +523,7 @@ const totalApps = allApps().length;
   }
   .btn.danger {
     border: 1px solid color-mix(in srgb, #ff4444 30%, transparent);
-    color: #ff4444;
+    color: var(--no-text);
     background: transparent;
   }
   .btn.danger:hover {

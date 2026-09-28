@@ -97,7 +97,7 @@ const hidden = (extra = {}) => ({ return_to: returnTo, ...extra });
           <div class="bga-top">
             <a class="admin-strong" href={s.link} target="_blank" rel="ugc nofollow noopener">{displayName(s)} ↗</a>
             <span class="microlabel">{usd(s.cleared_total)}{s.pending_total > 0 && ` · ${usd(s.pending_total)} pending`}</span>
-            {s.report_count > 0 && <span class="microlabel" style="color:var(--no-bg)">{s.report_count} reports</span>}
+            {s.report_count > 0 && <span class="microlabel" style="color:var(--no-text)">{s.report_count} reports</span>}
           </div>
           <div class="admin-actions">
             <form method="post" action="/api/thebuildgames/admin" data-astro-reload class="bga-inline">
