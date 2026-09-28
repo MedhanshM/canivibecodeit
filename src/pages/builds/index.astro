@@ -263,6 +263,11 @@ const href = (over = {}) => {
     color: var(--muted);
   }
 
+  /* the input drops its outline, so the row shows focus (as .bp-searchbox does) */
+  .bd-model-search:focus-within {
+    border-color: var(--primary);
+  }
+
   .bd-model-search input {
     flex: 1;
     min-width: 0;
